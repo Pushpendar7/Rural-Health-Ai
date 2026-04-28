@@ -5,7 +5,7 @@ import PIL.Image
 # --- 1. Page Configuration & UI Cleanup ---
 st.set_page_config(page_title="Rural Health AI", page_icon="🏥")
 
-# Professional CSS to hide GitHub buttons, Streamlit branding, and footers
+# Professional CSS to hide EVERYTHING: GitHub icon, footer, and menus
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -13,9 +13,16 @@ hide_st_style = """
             header {visibility: hidden;}
             .stAppDeployButton {display: none;}
             [data-testid="stToolbar"] {visibility: hidden !important;}
-            /* This targets the floating "Created by" badge */
+            
+            /* TARGETING THE GITHUB ICON / VIEWER BADGE */
             .viewerBadge_container__1QSob {display: none !important;}
             .viewerBadge_link__1S137 {display: none !important;}
+            #GithubIcon {visibility: hidden !important;}
+            
+            /* Removing any extra space at the bottom */
+            .stApp {
+                padding-bottom: 0px !important;
+            }
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
@@ -24,7 +31,6 @@ st.title("🏥 Multilingual Rural Health Assistant")
 st.markdown("---")
 
 # --- 2. AI Client Setup ---
-# Ensure your GEMINI_API_KEY is in Streamlit Cloud Secrets
 client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 def get_working_model():
