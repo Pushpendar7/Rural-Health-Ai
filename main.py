@@ -3,7 +3,7 @@ from google import genai
 import PIL.Image
 
 # --- 1. Page Configuration & UI Cleanup ---
-st.set_page_config(page_title="Rural Health AI",page_icon="🏥")
+st.set_page_config(page_title="Rural Health AI", page_icon="🏥")
 
 # The "Strong" CSS to remove the floating GitHub/Streamlit badge
 hide_st_style = """
