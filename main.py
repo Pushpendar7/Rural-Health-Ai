@@ -2,31 +2,41 @@ import streamlit as st
 from google import genai
 import PIL.Image
 
-# --- 1. Page Configuration & UI Cleanup ---
+# --- 1. Page Configuration & TOTAL UI Cleanup ---
 st.set_page_config(page_title="Rural Health AI", page_icon="🏥")
 
-# The "Strong" CSS to remove the floating GitHub/Streamlit badge
-hide_st_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            header {visibility: hidden;}
-            
-            /* Hides the floating "Hosted with Streamlit" / GitHub badge */
-            div[data-testid="stStatusWidget"] {display: none !important;}
-            .viewerBadge_container__1QSob {display: none !important;}
-            .viewerBadge_link__1S137 {display: none !important;}
-            [data-testid="stConnectionStatus"] {display: none !important;}
-            
-            /* Removes the toolbar at the top */
-            [data-testid="stToolbar"] {display: none !important;}
-            </style>
-            """
-st.markdown(hide_st_style, unsafe_allow_html=True)
+# This CSS targets the specific GitHub and Streamlit badges you circled
+hide_everything_css = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Target the floating GitHub icon and Streamlit crown badges */
+    .viewerBadge_container__1QSob,
+    .viewerBadge_link__1S137,
+    .styles_viewerBadge__1yB5_,
+    [data-testid="stStatusWidget"],
+    [data-testid="stConnectionStatus"],
+    #GithubIcon {
+        display: none !important;
+        visibility: hidden !important;
+    }
 
-# ... (the rest of your code stays the same)
+    /* Target the toolbar and deploy button */
+    [data-testid="stToolbar"], .stAppDeployButton {
+        display: none !important;
+    }
+    
+    /* Ensure the main app content doesn't have extra bottom padding */
+    .stApp {
+        bottom: 0 !important;
+    }
+    </style>
+    """
+st.markdown(hide_everything_css, unsafe_allow_html=True)
 
-st.title(" Multilingual Rural Health Assistant")
+st.title("🏥 Multilingual Rural Health Assistant")
 st.markdown("---")
 
 # --- 2. AI Client Setup ---
