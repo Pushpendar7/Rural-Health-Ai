@@ -5,27 +5,26 @@ import PIL.Image
 # --- 1. Page Configuration & UI Cleanup ---
 st.set_page_config(page_title="Rural Health AI", page_icon="🏥")
 
-# Professional CSS to hide EVERYTHING: GitHub icon, footer, and menus
+# The "Strong" CSS to remove the floating GitHub/Streamlit badge
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
-            .stAppDeployButton {display: none;}
-            [data-testid="stToolbar"] {visibility: hidden !important;}
             
-            /* TARGETING THE GITHUB ICON / VIEWER BADGE */
+            /* Hides the floating "Hosted with Streamlit" / GitHub badge */
+            div[data-testid="stStatusWidget"] {display: none !important;}
             .viewerBadge_container__1QSob {display: none !important;}
             .viewerBadge_link__1S137 {display: none !important;}
-            #GithubIcon {visibility: hidden !important;}
+            [data-testid="stConnectionStatus"] {display: none !important;}
             
-            /* Removing any extra space at the bottom */
-            .stApp {
-                padding-bottom: 0px !important;
-            }
+            /* Removes the toolbar at the top */
+            [data-testid="stToolbar"] {display: none !important;}
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
+
+# ... (the rest of your code stays the same)
 
 st.title("🏥 Multilingual Rural Health Assistant")
 st.markdown("---")
